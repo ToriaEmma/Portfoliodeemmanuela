@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Mes Compétences | Emmanuela TODEDJI</title>
+  <style>
+    /* Import font */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    /* Reset & Base */
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f5f7fa;
+      color: #2d3748;
+      line-height: 1.5;
+    }
+
+    /* Container général */
+    .section {
+      padding: 5rem 1rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Titre */
+    #skills h2 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      background: linear-gradient(90deg, #a18cd1, #38bdf8, #f472b6);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    /* Grille de colonnes */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    /* Chaque compétence */
+    .skill {
+      margin-bottom: 1.5rem;
+    }
+    .skill-label {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Barres */
+    .skill-bar {
+      background: #e2e8f0;
+      border-radius: 6px;
+      overflow: hidden;
+      height: 12px;
+    }
+    .skill-progress {
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      height: 100%;
+      width: 0;
+      transition: width 1.5s ease-in-out;
+    }
+
+    /* Animation fade-in */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .skills-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <section id="skills" class="section fade-in">
+    <h2>Mes Compétences</h2>
+    <div class="skills-grid">
+      <!-- Colonne 1 : Techniques -->
+      <div>
+        <h3 style="color:#5a67d8; margin-bottom:1rem;">Techniques</h3>
+
+        <div class="skill">
+          <div class="skill-label">
+            <span>C / C++</span><span>90%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-skill="90%"></div>
+          </div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-label">
+            <span>Haskell</span><span>75%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-skill="75%"></div>
+          </div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-label">
+            <span>HTML / CSS / JS</span><span>85%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-skill="85%"></div>
+          </div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-label">
+            <span>Figma / Canva</span><span>95%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-skill="95%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Colonne 2 : Méthodologiques & Communication -->
+      <div>
+        <h3 style="color:#9f7aea; margin-bottom:1rem;">Méthodologiques</h3>
+
+        <div class="skill">
+          <div class="skill-label">
+            <span>Gestion de projet</span><span>88%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-skill="88%"></div>
+          </div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-label">
+            <span>Résolution de problème</span><span>92%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-skill="92%"></div>
+          </div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-label">
+            <span>Autonomie</span><span>95%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-skill="95%"></div>
+          </div>
+        </div>
+
+        <h3 style="background: linear-gradient(90deg, #a18cd1, #38bdf8), transparent; -webkit-background-clip: text; color: transparent; margin:2rem 0 1rem;">Communication</h3>
+        <ul style="list-style:none; padding-left:0;">
+          <li>• Art oratoire</li>
+          <li>• Accueil</li>
+          <li>• Orientation</li>
+          <li>• Mentorat</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // 1) Fade-in au scroll
+    document.addEventListener('DOMContentLoaded', () => {
+      const sec = document.getElementById('skills');
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      obs.observe(sec);
+    });
+
+    // 2) Animation progressive des barres
+    function animateSkillBars() {
+      document.querySelectorAll('.skill-progress').forEach(bar => {
+        const target = bar.getAttribute('data-skill');
+        bar.style.width = target;
+      });
+    }
+    // Dès que #skills est visible, on anime
+    const skillsSection = document.getElementById('skills');
+    if (skillsSection) {
+      const skillsObs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateSkillBars();
+            skillsObs.unobserve(skillsSection);
+          }
+        });
+      }, { threshold: 0.3 });
+      skillsObs.observe(skillsSection);
+    }
+  </script>
+
+</body>
+</html>

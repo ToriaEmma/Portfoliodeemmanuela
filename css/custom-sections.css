@@ -1,0 +1,25 @@
+  font-weight: 600; /* Utiliser une valeur numérique est plus cohérent */
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #0cd4bd;
+  background-color: rgba(0, 0, 0, 0.9); /* Style de base (mode clair) */
+  padding: 15px 20px;
+  border-radius: 8px;
+  border: 2px solid #0cd4bd;
+  box-shadow: 0 2px 8px rgba(12, 212, 189, 0.3);
+  max-width: 80%;
+  margin-inline: auto; /* Raccourci moderne pour margin-left/right: auto */
+}
+
+/* Adaptation pour le mode sombre */
+.dark .projects-intro-text {
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 8px rgba(12, 212, 189, 0.5);
+}
+
+/* Cases de projets en carrés parfaits */
+.home-projects__grid .grid__item {
+  aspect-ratio: 1 / 1 !important;
+  width: 100% !important;
+  height: auto !important;
+}

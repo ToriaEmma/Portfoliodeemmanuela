@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Emmanuela TODEDJI</title>
+    
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="./css/portfolio-style.css">
+    <link rel="stylesheet" href="./css/custom-sections.css">
+    <link rel="stylesheet" href="./css/skills.css">
+    <link rel="stylesheet" href="./css/button-fix.css">
+    <link rel="stylesheet" href="./css/button-visible.css">
+    
+    <!-- Styles inline pour garantir la visibilité du bouton -->
+    <style>
+        /* Styles ultra-agressifs pour le bouton Envoyer */
+        .contact-section .contact-form button[type="submit"] {
+            background: linear-gradient(90deg, #4f46e5, #9333ea) !important;
+            color: white !important;
+            padding: 15px 30px !important;
+            border: none !important;
+            border-radius: 8px !important;
+            font-size: 16px !important;
+            font-weight: 600 !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            width: 100% !important;
+            display: block !important;
+            position: relative !important;
+            z-index: 9999 !important;
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3) !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            pointer-events: auto !important;
+            margin-top: 20px !important;
+            min-height: 50px !important;
+            line-height: 50px !important;
+            text-align: center !important;
+        }
+
+        .contact-section .contact-form button[type="submit"]:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4) !important;
+            background: linear-gradient(90deg, #4338ca, #7e22ce) !important;
+        }
+
+        /* Forcer la visibilité du bouton */
+        button[type="submit"] {
+            display: block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            background: #4f46e5 !important;
+            color: white !important;
+            padding: 15px 30px !important;
+            border: none !important;
+            border-radius: 8px !important;
+            font-size: 16px !important;
+            font-weight: bold !important;
+            cursor: pointer !important;
+            width: 100% !important;
+            margin-top: 20px !important;
+        }
+
+        /* Correction du formulaire */
+        .contact-form form {
+            position: relative !important;
+            z-index: 999 !important;
+        }
+
+        .contact-form {
+            position: relative !important;
+            z-index: 999 !important;
+        }
+    </style>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="top-navbar">
+        <ul class="nav-list">
+            <li><a href="#home">Accueil</a></li>
+            <li><a href="#about">À propos</a></li>
+            <li><a href="#skills">Compétences</a></li>
+            <li><a href="#projects">Projets</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Section Accueil -->
+    <section id="home" class="hero-section animate-on-scroll">
+        <div class="hero-container">
+            <div class="hero-image-col">
+                <div class="image-frame">
+                    <div class="bg-shape-1"></div>
+                    <div class="bg-shape-2"></div>
+                    <img src="img/photodeprofil.jpeg" alt="Emmanuela Todedji" class="hero-avatar">
+                </div>
+            </div>
+            <div class="hero-text-col">
+                <p class="hero-intro">Bonjour, je suis</p>
+                <h1 class="hero-name">Emmanuela TODEDJI</h1>
+                <div class="hero-divider"></div>
+                <h2 class="hero-title">Développeuse & Graphiste</h2>
+                <p class="hero-description">
+                    J'aide les entreprises et créateurs à transformer leurs 
+                    idées en expériences numériques modernes, élégantes 
+                    et performantes.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn-primary-hero">Voir mon travail</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section À propos -->
+    <section id="about" class="about-section">
+        <div class="about-container">
+            <div class="about-text" data-aos="fade-right">
+                <h2>Mon parcours</h2>
+                <p>
+                    Je suis Emmanuela TODEDJI, jeune designer de marque autodidacte de 18 ans, 
+                    passionnée par la direction artistique et le design numérique.
+                </p>
+                <p>
+                    Forte de 2 années d'expérience et d'une formation à EPITECH BÉNIN en informatique, 
+                    j'ai acquis des compétences solides en graphisme et en conception d'interfaces UI/UX.
+                </p>
+                <div class="tags">
+                    <span class="tag">Bienveillance</span>
+                    <span class="tag">Patience</span>
+                    <span class="tag">Esprit d'équipe</span>
+                    <span class="tag">Autonomie</span>
+                    <span class="tag">Gestion du stress</span>
+                </div>
+            </div>
+            <div class="about-cards" data-aos="fade-left">
+                <div class="card">
+                    <div class="icon">💻</div>
+                    <div class="card-content">
+                        <h3>Passions</h3>
+                        <p>Développement web, UX/UI design, création d'interfaces intuitives.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="icon">🎮</div>
+                    <div class="card-content">
+                        <h3>Jeux vidéo</h3>
+                        <p>RPG, jeux d'aventure et conception de mécaniques innovantes.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="icon">🎨</div>
+                    <div class="card-content">
+                        <h3>Créativité</h3>
+                        <p>Graphisme, dessin, bricolage et photographie.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="icon">❤️</div>
+                    <div class="card-content">
+                        <h3>Valeurs</h3>
+                        <p>Inclusion, partage des connaissances et empowerment par la tech.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Compétences -->
+    <section id="skills" class="skills-section">
+        <h2 data-aos="fade-down">Mes Compétences</h2>
+        <div class="skills-container">
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Techniques</h3>
+                    <div class="skill">
+                        <div class="skill-label">
+                            <span>C / C++</span><span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-skill="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-label">
+                            <span>HTML / CSS / JS</span><span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-skill="85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-label">
+                            <span>Figma / Canva</span><span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-skill="95%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Méthodologiques</h3>
+                    <div class="skill">
+                        <div class="skill-label">
+                            <span>Gestion de projet</span><span>88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-skill="88%"></div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-label">
+                            <span>Autonomie</span><span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-skill="95%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Projets -->
+    <section id="projects" class="projects-section">
+        <h2 data-aos="fade-down">Mes Projets</h2>
+        <div class="projects-grid">
+            <div class="project-card" data-aos="fade-up">
+                <img src="pour mon future/Green and White Minimalist Natural Skincare Feed Ad (1).png" alt="Natural Skincare">
+                <h3>Natural Skincare</h3>
+                <p>Design minimaliste pour produits skincare</p>
+            </div>
+            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                <img src="pour mon future/Orange and Yellow Modern Professional Product Promotion Special Summer Sale Instagram Post (5).png" alt="Summer Sale">
+                <h3>Summer Sale</h3>
+                <p>Promotion moderne pour vente d'été</p>
+            </div>
+            <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="pour mon future/Pink Vibrant Gradient Weekend Special Promo Smoothie Instagram Post (42 x 59 cm).png" alt="Smoothie Promo">
+                <h3>Smoothie Weekend</h3>
+                <p>Design vibrant pour promotion smoothie</p>
+            </div>
+            <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                <img src="pour mon future/Yellow Green 3D Illustrated Promotional Summer Cosmetics Facebook Post (1).png" alt="Cosmetics 3D">
+                <h3>Cosmetics 3D</h3>
+                <p>Design 3D pour cosmétiques d'été</p>
+            </div>
+            <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+                <img src="pour mon future/post.svg" alt="Post Vectoriel">
+                <h3>Design Vectoriel</h3>
+                <p>Création vectorielle modifiable</p>
+            </div>
+            <div class="project-card" data-aos="fade-up" data-aos-delay="500">
+                <img src="pour mon future/9.png" alt="Design 9">
+                <h3>Design Créatif</h3>
+                <p>Composition graphique originale</p>
+            </div>
+            <div class="project-card" data-aos="fade-up" data-aos-delay="600">
+                <img src="pour mon future/l-dark (4).png" alt="Dark Theme">
+                <h3>Dark Theme</h3>
+                <p>Design avec thème sombre élégant</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section id="contact" class="contact-section">
+        <h2 data-aos="fade-down">Contactez-moi</h2>
+        <div class="contact-container">
+            <div class="contact-form" data-aos="fade-right">
+                <h3>Envoyez-moi un message</h3>
+                <form>
+                    <input type="text" placeholder="Nom complet" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="text" placeholder="Sujet" required>
+                    <textarea placeholder="Message" rows="5" required></textarea>
+                    <button type="submit">Envoyer le message</button>
+                </form>
+            </div>
+            <div class="contact-info" data-aos="fade-left">
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h4>Email</h4>
+                        <p>emmanuela.todedji@epitech.eu</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h4>Téléphone</h4>
+                        <p>+229 68 67 80 25</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fab fa-linkedin"></i>
+                    <div>
+                        <h4>LinkedIn</h4>
+                        <p>linkedin.com/in/EmmanuelaTODEDJI</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-logo">
+                <h2>Emmanuela <span>TODEDJI</span></h2>
+                <p>Développeuse & Designer</p>
+            </div>
+            <nav class="footer-menu">
+                <a href="#home">Accueil</a>
+                <a href="#about">À propos</a>
+                <a href="#projects">Projets</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <div class="footer-socials">
+                <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="mailto:emmanuela.todedji@epitech.eu"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 <strong>Emmanuela TODEDJI</strong>. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="./js/sections-animations.js"></script>
+    <script src="./js/projects-interaction.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+</body>
+</html>

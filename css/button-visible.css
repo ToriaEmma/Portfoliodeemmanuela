@@ -1,0 +1,55 @@
+/* Styles garantissant la visibilité du bouton Envoyer */
+.contact-section .contact-form button[type="submit"] {
+    background: linear-gradient(90deg, #4f46e5, #9333ea);
+    color: white;
+    padding: 0.9rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    display: block;
+    position: relative;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+    margin-top: 1rem;
+}
+
+.contact-section .contact-form button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
+    background: linear-gradient(90deg, #4338ca, #7e22ce);
+}
+
+.contact-section .contact-form button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* Styles de fallback pour garantir la visibilité */
+.contact-form button {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+}
+
+/* Styles responsifs */
+@media (max-width: 768px) {
+    .contact-section .contact-form button[type="submit"] {
+        font-size: 1.1rem;
+        padding: 1rem 1.5rem;
+    }
+}
+
+/* Correction de positionnement */
+.contact-form {
+    position: relative;
+    z-index: 999;
+}
+
+.contact-section {
+    position: relative;
+    z-index: 100;
+}

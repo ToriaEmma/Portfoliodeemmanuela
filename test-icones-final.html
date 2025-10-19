@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Icônes Interactives - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image-container {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        /* ===== ICÔNES INTERACTIVES ===== */
+        .project-quick-actions {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            display: flex;
+            gap: 8px;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 10;
+        }
+
+        .project-card:hover .project-quick-actions {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .quick-action-btn {
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .quick-action-btn:hover {
+            transform: scale(1.15);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .quick-action-btn i {
+            font-size: 16px;
+            color: #333;
+            transition: color 0.2s ease;
+        }
+
+        .gallery-btn:hover {
+            background: linear-gradient(135deg, #8b5cf6, #a855f7);
+        }
+
+        .gallery-btn:hover i {
+            color: white;
+        }
+
+        .download-btn:hover {
+            background: linear-gradient(135deg, #0cd4bd, #06b6d4);
+        }
+
+        .download-btn:hover i {
+            color: white;
+        }
+
+        .external-btn:hover {
+            background: linear-gradient(135deg, #e91e63, #ec4899);
+        }
+
+        .external-btn:hover i {
+            color: white;
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+
+        .project-description {
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .project-platform {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #374151;
+        }
+
+        /* ===== LIGHTBOX ===== */
+        .gallery-lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            animation: fadeIn 0.3s ease forwards;
+        }
+
+        .lightbox-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 45px;
+            height: 45px;
+            border: none;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: scale(1.1);
+        }
+
+        .lightbox-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            z-index: 10000;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.3s ease forwards;
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .project-quick-actions {
+                opacity: 1;
+                transform: translateY(0);
+                top: 8px;
+                right: 8px;
+                gap: 6px;
+            }
+            
+            .quick-action-btn {
+                width: 36px;
+                height: 36px;
+            }
+            
+            .quick-action-btn i {
+                font-size: 14px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>✨ Test des Icônes Interactives</h1>
+        
+        <div class="projects-grid" id="projectsGrid">
+            <!-- Les projets seront générés ici -->
+        </div>
+    </div>
+
+    <script>
+        // Données des projets
+        const projectsData = [
+            {
+                id: 1,
+                title: "ArbitraChain",
+                description: "Plateforme blockchain avec IA pour l'arbitrage automatisé",
+                thumbnail: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=400&h=250&fit=crop",
+                platform: "figma",
+                url: "https://www.figma.com/design/b8TkVP7lMw4LAY9gOsnQi2/ArbitraChain?node-id=0-1&t=Uiqne6PB3DurNC5D-1"
+            },
+            {
+                id: 2,
+                title: "Crispy Restaurant",
+                description: "Site e-commerce moderne pour fast-food avec commande en ligne",
+                thumbnail: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=250&fit=crop",
+                platform: "figma",
+                url: "https://www.figma.com/design/5sWs5uxJEu0lxzLVIjvCJu/Untitled?node-id=3-1042&t=UNc6tTdtHErmi0cr-1" 
+"
+            },
+            {
+                id: 3,
+                title: "NextGen Portfolio",
+                description: "Landing page innovante pour agence de développement",
+                thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop",
+                platform: "canva",
+                url: "https://www.canva.com/design/DAGudULUlEQ/FX_tf2tFhrWPbiuq5DkvCw/edit"
+            },
+            {
+                id: 4,
+                title: "Astro Startup",
+                description: "Interface moderne pour startup technologique",
+                thumbnail: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=250&fit=crop",
+                platform: "figma",
+                url: " https://www.canva.com/design/DAGvIs92k4E/o_a_kXZaR35FdEdRpkOK8g/edit"
+            },
+            {
+                id: 5,
+                title: "Astro Startup",
+                description: "Interface moderne pour startup technologique",
+                thumbnail: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=250&fit=crop",
+                platform: "figma",
+                url: "https://www.canva.com/design/DAGuvMRd0yQ/eCLx5AbuNHxA7UW6wbcntA/edit"
+            },
+            {
+                id: 6,
+                title: "Astro Startup",
+                description: "Interface moderne pour startup technologique",
+                thumbnail: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=250&fit=crop",
+                platform: "figma",
+                url: "  https://www.canva.com/design/DAGwGVcWHD0/YSOUwHDjgavZ4sf3-LToIw/edit"
+            }
+        ];
+
+        // Fonction pour créer une carte projet avec icônes
+        function createProjectCard(project) {
+            const platformIcon = project.platform === 'figma' ? '📐' : '🎨';
+            const platformName = project.platform === 'figma' ? 'Figma' : 'Canva';
+            
+            return `
+                <article class="project-card" data-project-id="${project.id}">
+                    <div class="project-image-container">
+                        <img 
+                            src="${project.thumbnail}" 
+                            alt="Aperçu du projet ${project.title}"
+                            class="project-image"
+                            loading="lazy"
+                        >
+                        <!-- Icônes interactives en haut à droite -->
+                        <div class="project-quick-actions">
+                            <button 
+                                type="button" 
+                                class="quick-action-btn gallery-btn" 
+                                data-action="gallery" 
+                                data-project-id="${project.id}"
+                                aria-label="Voir les photos de ${project.title}"
+                            >
+                                <i class="fas fa-images"></i>
+                            </button>
+                            <button 
+                                type="button" 
+                                class="quick-action-btn external-btn" 
+                                data-action="external" 
+                                data-project-id="${project.id}"
+                                aria-label="Ouvrir dans ${platformName}"
+                            >
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="project-content">
+                        <h3 class="project-title">${project.title}</h3>
+                        <p class="project-description">${project.description}</p>
+                        <div class="project-platform" title="Créé avec ${platformName}">
+                            <span class="platform-icon">${platformIcon}</span>
+                            <span class="platform-name">${platformName}</span>
+                        </div>
+                    </div>
+                </article>
+            `;
+        }
+
+        // Rendu des projets
+        function renderProjects() {
+            const grid = document.getElementById('projectsGrid');
+            grid.innerHTML = projectsData.map(project => createProjectCard(project)).join('');
+        }
+
+        // Gestion des clics sur les icônes
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.quick-action-btn')) {
+                const btn = e.target.closest('.quick-action-btn');
+                const action = btn.dataset.action;
+                const projectId = btn.dataset.projectId;
+                const project = projectsData.find(p => p.id === parseInt(projectId));
+                
+                if (!project) return;
+                
+                switch(action) {
+                    case 'gallery':
+                        openGalleryLightbox(project);
+                        break;
+                    case 'external':
+                        openExternalLink(project);
+                        break;
+                }
+            }
+        });
+
+        // Fonction lightbox galerie
+        function openGalleryLightbox(project) {
+            const lightbox = document.createElement('div');
+            lightbox.className = 'gallery-lightbox';
+            lightbox.innerHTML = `
+                <div class="lightbox-overlay"></div>
+                <div class="lightbox-content">
+                    <button class="lightbox-close">&times;</button>
+                    <div class="lightbox-images">
+                        <img src="${project.thumbnail}" alt="${project.title}" class="lightbox-image">
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(lightbox);
+            
+            lightbox.querySelector('.lightbox-close').onclick = () => lightbox.remove();
+            lightbox.querySelector('.lightbox-overlay').onclick = (e) => {
+                if (e.target === e.currentTarget) lightbox.remove();
+            };
+
+            // Fermer avec Escape
+            document.addEventListener('keydown', function escapeHandler(e) {
+                if (e.key === 'Escape') {
+                    lightbox.remove();
+                    document.removeEventListener('keydown', escapeHandler);
+                }
+            });
+        }
+
+
+
+        // Fonction lien externe
+        function openExternalLink(project) {
+            if (project.url) {
+                window.open(project.url, '_blank');
+                showToast('🔗 Ouverture dans un nouvel onglet...');
+            } else {
+                showToast('❌ Lien externe non disponible');
+            }
+        }
+
+        // Fonction toast notification
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.animation = 'slideUp 0.3s ease reverse';
+                setTimeout(() => toast.remove(), 300);
+            }, 2000);
+        }
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProjects();
+            console.log('✅ Icônes interactives chargées avec succès !');
+        });
+    </script>
+</body>
+</html>

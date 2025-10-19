@@ -1,0 +1,204 @@
+/* =============================================================================
+   OPTIMISATIONS DE PERFORMANCE ET RESPONSIVE
+   ============================================================================= */
+
+/* Optimisations de rendu */
+.gpu-layer {
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Lazy loading pour les images */
+img.lazy {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+img.lazy.loaded {
+  opacity: 1;
+}
+
+/* Optimisations de scroll */
+.scroll-container {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Réduction des repaints */
+.no-repaint {
+  contain: layout style paint;
+}
+
+/* Optimisations pour les animations */
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll,
+  .reveal-from-bottom,
+  .reveal-from-left,
+  .reveal-from-right {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  .floating-icons,
+  .tech-icon {
+    animation: none !important;
+  }
+}
+
+/* Responsive design amélioré */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-sm);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 var(--spacing-lg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 var(--spacing-xl);
+  }
+}
+
+/* Grid responsive optimisé */
+.responsive-grid {
+  display: grid;
+  gap: var(--spacing-lg);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .responsive-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Typographie responsive */
+.responsive-text {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  line-height: 1.6;
+}
+
+.responsive-heading {
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  line-height: 1.2;
+}
+
+/* Optimisations pour les cartes */
+.card-optimized {
+  contain: layout style;
+  transform: translateZ(0);
+}
+
+.card-optimized:hover {
+  transform: translateZ(0) translateY(-4px);
+}
+
+/* Optimisations pour les modales */
+.modal-backdrop {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Optimisations pour les formulaires */
+.form-field {
+  contain: layout style;
+}
+
+.form-field:focus-within {
+  contain: none;
+}
+
+/* Optimisations pour les boutons */
+.btn-optimized {
+  contain: layout style;
+  transform: translateZ(0);
+}
+
+.btn-optimized:hover {
+  transform: translateZ(0) translateY(-2px);
+}
+
+/* Optimisations pour les images de profil */
+.profile-image {
+  contain: layout style paint;
+  object-fit: cover;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Optimisations pour les gradients */
+.gradient-optimized {
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+/* Optimisations pour les ombres */
+.shadow-optimized {
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+/* Optimisations pour les transitions */
+.transition-optimized {
+  transition-property: transform, opacity, box-shadow;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Optimisations pour le mode sombre */
+@media (prefers-color-scheme: dark) {
+  .dark-optimized {
+    color-scheme: dark;
+  }
+  
+  .dark-optimized img {
+    filter: brightness(0.9);
+  }
+}
+
+/* Optimisations pour les écrans haute densité */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .high-dpi-optimized {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Optimisations pour les écrans tactiles */
+@media (hover: none) and (pointer: coarse) {
+  .touch-optimized {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .hover-effect {
+    transform: none !important;
+  }
+}
+
+/* Optimisations pour l'impression */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-optimized {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+  }
+}

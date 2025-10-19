@@ -1,0 +1,16 @@
+/*
+  Correction agressive pour forcer l'affichage du footer.
+  La structure HTML de la page est invalide, ce qui cause des problèmes d'affichage.
+  Ce style force le footer à être visible en bas de l'écran.
+*/
+footer.footer {
+    position: fixed !important;    /* Positionne par rapport à la fenêtre */
+    bottom: 0 !important;          /* Colle en bas */
+    left: 0 !important;            /* Colle à gauche */
+    right: 0 !important;           /* Colle à droite */
+    z-index: 9999 !important;      /* Au-dessus de tout */
+    display: block !important;     /* Assure que c'est un bloc */
+    visibility: visible !important;/* Force la visibilité */
+    opacity: 1 !important;         /* Force l'opacité */
+    transform: none !important;    /* Annule les transformations */
+}

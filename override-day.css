@@ -1,0 +1,19 @@
+/* Override forcé pour le mode jour (chargé en dernier) */
+html:not(.dark),
+body:not(.dark),
+html:not(.dark) #__nuxt {
+  background: #fff url('/_nuxt/img/white-bg.58090aa.svg') center top / cover no-repeat !important;
+  background-attachment: fixed !important;
+}
+
+/* Montagnes jour (violettes) */
+html:not(.dark) .plan--second { background-image: url('/_nuxt/img/mountains_atelierpaon_2.e02f9e6.svg') !important; }
+html:not(.dark) .plan--third  { background-image: url('/_nuxt/img/mountains-middle_atelierpaon_3.6ecf003.svg') !important; }
+html:not(.dark) .plan--fourth { background-image: url('/_nuxt/img/mountains-front_atelierpaon_4.7d8acae.svg') !important; }
+html:not(.dark) .plan--fifth  { background-image: url('/_nuxt/img/floor_atelierpaon_5.2e6831c.svg') !important; }
+
+/* Sécurité: si un style inline force un fond sombre, neutraliser en mode jour */
+html:not(.dark) [style*="background-image"],
+html:not(.dark) [style*="background"] {
+  background-color: transparent !important;
+}

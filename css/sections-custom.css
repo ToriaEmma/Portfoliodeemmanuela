@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lora:wght@700&family=Poppins:wght@400;600&display=swap');
+body { font-family: 'Inter', 'Poppins', Arial, sans-serif; }
+.section-about, .section-skills, .section-contact {
+  margin: 0 auto 4rem auto;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.07);
+  padding: 3rem 1.5rem;
+  max-width: 1100px;
+  background: #fff;
+  animation: fadeInUp 1s both;
+}
+.section-skills { background: #f7f7fa; }
+.section-contact { background: linear-gradient(120deg, #f7f7fa 60%, #ffe5ec 100%); }
+.about-container { display: flex; gap: 2.5rem; align-items: center; flex-wrap: wrap; }
+.about-photo img { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; box-shadow: 0 2px 16px #e0e0e0; }
+.about-text { flex: 1; }
+.about-quote { margin-top: 1.5rem; font-style: italic; color: #e67e22; font-family: 'Lora', serif; }
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 2rem; }
+.skill-card { background: #fff; border-radius: 1rem; box-shadow: 0 2px 12px #ececec; padding: 2rem 1rem; text-align: center; transition: transform .3s, box-shadow .3s; }
+.skill-card:hover { transform: scale(1.05); box-shadow: 0 8px 32px #e0e0e0; }
+.skill-bar { background: #eee; border-radius: 4px; height: 8px; margin: 1rem 0; }
+.skill-bar-fill { background: linear-gradient(90deg, #e67e22, #e91e63); border-radius: 4px; height: 100%; width: 0; transition: width 1.2s cubic-bezier(.4,2,.6,1); }
+.section-contact form { display: flex; flex-direction: column; gap: 1rem; }
+.section-contact input, .section-contact textarea { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; font-size: 1rem; }
+.section-contact button { background: #e67e22; color: #fff; border: none; border-radius: 8px; padding: 1rem; font-weight: 600; cursor: pointer; transition: background .3s; }
+.section-contact button:hover { background: #e91e63; }
+.contact-socials a { margin: 0 0.5rem; display: inline-block; transition: transform .2s; }
+.contact-socials a:hover { transform: scale(1.2); }
+@keyframes fadeInUp { from { opacity:0; transform: translateY(40px);} to { opacity:1; transform: none; } }
+.reveal-on-scroll { opacity: 0; transform: translateY(40px); transition: opacity .7s, transform .7s; }
+.reveal-on-scroll.visible { opacity: 1; transform: none; }
+@media (max-width: 768px) {
+  .about-container { flex-direction: column; text-align: center; }
+  .about-photo img { margin: 0 auto 2rem auto; }
+}

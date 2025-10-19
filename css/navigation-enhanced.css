@@ -1,0 +1,133 @@
+/* =============================================================================
+   NAVIGATION AMÉLIORÉE AVEC INDICATEUR ACTIF
+   ============================================================================= */
+
+/* Styles pour la navigation active */
+.nav-list a.active {
+  background: var(--gradient-primary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+.nav-list a.active::before {
+  left: 0;
+}
+
+/* Navigation scrollée */
+.top-navbar.scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: var(--shadow-strong);
+  transform: translateX(-50%) translateY(-5px);
+}
+
+/* Indicateur de scroll pour la navigation */
+.nav-scroll-indicator {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 2px;
+  background: var(--gradient-primary);
+  transition: var(--transition-normal);
+  border-radius: 1px;
+}
+
+/* Focus visible amélioré pour l'accessibilité */
+.keyboard-navigation .nav-list a:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  background: rgba(12, 212, 189, 0.1);
+}
+
+/* Skip link pour l'accessibilité */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--primary-color);
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  z-index: 10000;
+  transition: top 0.3s ease;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Responsive navigation améliorée */
+@media (max-width: 768px) {
+  .top-navbar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+  }
+  
+  .nav-list {
+    gap: 2px;
+  }
+  
+  .nav-list a {
+    padding: 10px 14px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-list {
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
+  }
+  
+  .nav-list a {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    min-width: auto;
+  }
+}
+
+/* Animation de chargement pour la navigation */
+.nav-list a {
+  opacity: 0;
+  animation: slideInNav 0.6s ease forwards;
+}
+
+.nav-list a:nth-child(1) { animation-delay: 0.1s; }
+.nav-list a:nth-child(2) { animation-delay: 0.2s; }
+.nav-list a:nth-child(3) { animation-delay: 0.3s; }
+.nav-list a:nth-child(4) { animation-delay: 0.4s; }
+.nav-list a:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes slideInNav {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mode sombre pour la navigation */
+@media (prefers-color-scheme: dark) {
+  .top-navbar {
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid rgba(12, 212, 189, 0.2);
+  }
+  
+  .top-navbar.scrolled {
+    background: rgba(15, 23, 42, 0.98);
+  }
+  
+  .nav-list a {
+    color: var(--text-primary);
+  }
+  
+  .keyboard-navigation .nav-list a:focus {
+    background: rgba(12, 212, 189, 0.2);
+  }
+}

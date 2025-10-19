@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Icônes Interactives</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .test-card {
+            width: 300px;
+            height: 200px;
+            background: white;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin: 20px;
+        }
+        
+        .test-image {
+            width: 100%;
+            height: 60%;
+            background: linear-gradient(45deg, #0cd4bd, #4f46e5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+        
+        /* Icônes interactives en haut à droite */
+        .project-quick-actions {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            display: flex;
+            gap: 8px;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 10;
+        }
+        
+        .test-card:hover .project-quick-actions {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .quick-action-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(4px);
+            font-size: 14px;
+        }
+        
+        .quick-action-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .gallery-btn:hover {
+            background: rgba(79, 70, 229, 0.9);
+        }
+        
+        .download-btn:hover {
+            background: rgba(12, 212, 189, 0.9);
+        }
+        
+        .external-btn:hover {
+            background: rgba(233, 30, 99, 0.9);
+        }
+        
+        .test-content {
+            padding: 15px;
+        }
+        
+        .test-title {
+            margin: 0 0 8px 0;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .test-desc {
+            margin: 0;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test des Icônes Interactives</h1>
+    <p>Survolez la carte pour voir les icônes apparaître en haut à droite :</p>
+    
+    <div class="test-card">
+        <div class="test-image">
+            Image du projet
+        </div>
+        
+        <!-- Icônes interactives en haut à droite -->
+        <div class="project-quick-actions">
+            <button 
+                type="button" 
+                class="quick-action-btn gallery-btn" 
+                onclick="alert('Galerie cliquée!')"
+                aria-label="Voir la galerie"
+            >
+                <i class="fas fa-images"></i>
+            </button>
+            <button 
+                type="button" 
+                class="quick-action-btn download-btn" 
+                onclick="alert('Téléchargement cliqué!')"
+                aria-label="Télécharger"
+            >
+                <i class="fas fa-download"></i>
+            </button>
+            <button 
+                type="button" 
+                class="quick-action-btn external-btn" 
+                onclick="alert('Lien externe cliqué!')"
+                aria-label="Ouvrir dans Figma"
+            >
+                <i class="fab fa-figma"></i>
+            </button>
+        </div>
+        
+        <div class="test-content">
+            <h3 class="test-title">Projet Test</h3>
+            <p class="test-desc">Description du projet de test</p>
+        </div>
+    </div>
+    
+    <h2>Instructions pour intégrer dans votre site :</h2>
+    <ol>
+        <li><strong>Le CSS a déjà été ajouté</strong> dans votre fichier principal ✅</li>
+        <li><strong>Ajoutez ce HTML</strong> dans votre fonction <code>createProjectCard</code> après la balise <code>&lt;img&gt;</code> :</li>
+    </ol>
+    
+    <pre style="background: #f0f0f0; padding: 15px; border-radius: 8px; overflow-x: auto;">
+&lt;!-- Icônes interactives en haut à droite --&gt;
+&lt;div class="project-quick-actions"&gt;
+  &lt;button 
+    type="button" 
+    class="quick-action-btn gallery-btn" 
+    data-action="gallery" 
+    data-project-id="${project.id}"
+    aria-label="Voir la galerie de ${project.title}"
+  &gt;
+    &lt;i class="fas fa-images"&gt;&lt;/i&gt;
+  &lt;/button&gt;
+  &lt;button 
+    type="button" 
+    class="quick-action-btn download-btn" 
+    data-action="quick-download" 
+    data-project-id="${project.id}"
+    aria-label="Télécharger ${project.title}"
+  &gt;
+    &lt;i class="fas fa-download"&gt;&lt;/i&gt;
+  &lt;/button&gt;
+  &lt;button 
+    type="button" 
+    class="quick-action-btn external-btn" 
+    data-action="external" 
+    data-project-id="${project.id}"
+    aria-label="Ouvrir dans ${platformName}"
+  &gt;
+    &lt;i class="fab fa-${project.platform === 'figma' ? 'figma' : 'canva'}"&gt;&lt;/i&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+    </pre>
+    
+    <ol start="3">
+        <li><strong>Ajoutez cette ligne</strong> avant <code>&lt;/body&gt;</code> dans votre fichier principal :</li>
+    </ol>
+    
+    <pre style="background: #f0f0f0; padding: 15px; border-radius: 8px;">
+&lt;script src="js/project-quick-actions.js"&gt;&lt;/script&gt;
+    </pre>
+</body>
+</html>
