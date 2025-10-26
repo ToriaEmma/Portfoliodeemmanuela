@@ -3,12 +3,12 @@
 
   // Configuration des projets avec URLs d'embed et images
   const projectsConfig = {
-    'arbitrachain': {
-      title: 'ArbitraChain',
+    'saconnect': {
+      title: 'Saconnect',
       platform: 'figma',
-      url: 'https://www.figma.com/design/b8TkVP7lMw4LAY9gOsnQi2/ArbitraChain?node-id=0-1&t=Uiqne6PB3DurNC5D-1',
-      embedUrl: 'https://www.figma.com/embed?embed_host=share&url=https%3A//www.figma.com/design/b8TkVP7lMw4LAY9gOsnQi2/ArbitraChain%3Fnode-id%3D0-1%26t%3DUiqne6PB3DurNC5D-1',
-      image: 'img/projets/l-dark (4).png'
+      url: 'https://www.figma.com/design/lUhXoqXxgxtR4uthfUtHs0/module?node-id=0-1&t=qkk8LVeRoJ1PdstB-1',
+      embedUrl: 'https://www.figma.com/embed?embed_host=share&url=https%3A//www.figma.com/design/lUhXoqXxgxtR4uthfUtHs0/module%3Fnode-id%3D0-1%26t%3Dqkk8LVeRoJ1PdstB-1',
+      image: 'img/projets/saconect.png'
     },
     'design-system': {
       title: 'Design System',
